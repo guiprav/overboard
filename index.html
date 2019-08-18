@@ -1,0 +1,50 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Posttrello</title>
+<script src="bundle.js"></script>
+
+<style>
+  @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    font-family: Roboto, sans-serif;
+    font-size: 14px;
+    background-color: #0079bf;
+  }
+
+  body {
+    display: flex;
+    align-items: flex-start;
+    margin: 12px;
+  }
+
+  body > :nth-child(n+2) {
+    margin-left: 12px;
+  }
+
+  .cardList {
+    width: 272px;
+    border-radius: 3px;
+    padding: 10px 8px;
+    background-color: #dfe1e6;
+  }
+
+  .cardList-header {
+    padding: 0 4px;
+  }
+
+  .cardList > :nth-child(n+2) {
+    margin-top: 8px;
+  }
+
+  .card {
+    border-radius: 3px;
+    padding: 6px 8px;
+    background-color: white;
+    cursor: pointer;
+  }
+</style>
