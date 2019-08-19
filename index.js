@@ -1,22 +1,20 @@
-let CardList = require('./components/CardList');
+let Board = require('./components/Board');
 
 window.dom = require('dominant');
+window.hub = require('./hub');
 
 addEventListener('DOMContentLoaded', () => {
-  document.body.append(window.toDoList = CardList({
-    title: 'To-Do',
+  window.boardState = {};
 
-    cards: [
-      { title: 'Stay home' },
-      { title: 'Do the dishes' },
-    ],
-  }));
+  hub.subscribe((err, state) => {
+    if (err) {
+      console.error(err);
+      return;
+    }
 
-  document.body.append(window.doingList = CardList({
-    title: 'Doing',
+    boardState = state;
+    dom.update();
+  });
 
-    cards: [
-      { title: 'Procrastinate' },
-    ],
-  }));
+  document.body.append(window.board = Board(() => boardState));
 });
