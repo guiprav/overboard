@@ -10,7 +10,7 @@
   "dependencies": {
     "dominant": "github:n2liquid/dominant#master",
     "nanoid": "^2.0.4",
-    "prototype-hub": "github:n2liquid/prototype-hub#master"
+    "prototype-hub": "github:n2liquid/prototype-hub#heroku-1"
   },
   "devDependencies": {
     "browserify": "^16.5.0"
