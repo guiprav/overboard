@@ -1,1 +1,1 @@
-{"lists":[{"title":"To-Do","cards":[{"title":"Hello"},{"title":"World"}]},{"title":"Doing","cards":[{"title":"Foo"}]},{"title":"Done","cards":[{"title":"Bar"}]}]}
+{"board":{"lists":[{"title":"To-Do","cards":[{"title":"Hello"},{"title":"World"}]},{"title":"Doing","cards":[{"title":"Foo"}]},{"title":"Done","cards":[{"title":"Bar"}]}]}}

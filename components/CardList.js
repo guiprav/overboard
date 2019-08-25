@@ -5,22 +5,24 @@ module.exports = state => {
   let refs = {};
 
   let cardList = dom.el('div', { class: 'cardList' }, [
-    dom.el('div', { class: 'cardList-header' }, [
-      refs.title = dom.el('div', { class: 'cardList-title' }),
+    dom.el('div', { class: 'cardList-listHeader' }, [
+      refs.title = dom.el('div', { class: 'cardList-listTitle' }),
     ]),
 
-    refs.cardWrapper = dom.el('div', { class: 'cardList-cardWrapper' }),
+    dom.el('div', { class: 'cardList-cardsWrapper' }, [
+      refs.cardPlaceholder = dom.comment(),
+    ]),
   ]);
 
   Object.defineProperty(cardList, 'state', {
-    get: () => dom.resolve(state),
+    get: () => dom.resolve(state) || {},
   });
 
-  dom.props(refs.title, () => ({ textContent: dom.resolve(state).title }));
+  dom.props(refs.title, () => ({ textContent: cardList.state.title }));
 
-  dom.array(refs.cardWrapper, {
-    get: () => dom.resolve(state).cards,
-    forEach: (wrapper, cardState) => wrapper.append(Card(cardState)),
+  dom.repeat(refs.cardPlaceholder, {
+    get: () => cardList.state.cards,
+    map: cardState => Card(cardState),
   });
 
   return cardList;

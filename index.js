@@ -1,20 +1,8 @@
-let Board = require('./components/Board');
-
-window.dom = require('dominant');
-window.hub = require('./hub');
+let App = require('./components/App');
 
 addEventListener('DOMContentLoaded', () => {
-  window.boardState = {};
+  window.app = App();
+  window.hub = app.state.hub;
 
-  hub.subscribe((err, state) => {
-    if (err) {
-      console.error(err);
-      return;
-    }
-
-    boardState = state;
-    dom.update();
-  });
-
-  document.body.append(window.board = Board(() => boardState));
+  document.body.append(app);
 });

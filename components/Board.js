@@ -5,12 +5,16 @@ module.exports = state => {
   let refs = {};
 
   let board = dom.el('div', { class: 'board' }, [
-    refs.cardListWrapper = dom.el('div', { class: 'board-cardListWrapper' }),
+    refs.cardListPlaceholder = dom.comment(),
   ]);
 
-  dom.array(refs.cardListWrapper, {
-    get: () => dom.resolve(state).lists || [],
-    forEach: (list, listState) => list.append(CardList(listState)),
+  Object.defineProperty(board, 'state', {
+    get: () => dom.resolve(state) || {},
+  });
+
+  dom.repeat(refs.cardListPlaceholder, {
+    get: () => board.state.lists || [],
+    map: listState => CardList(listState),
   });
 
   return board;

@@ -4,7 +4,7 @@
   "author": "Gui Prá (super.driver.512@gmail.com)",
   "license": "AGPL-3.0+",
   "scripts": {
-    "build": "browserify index.js -o bundle.js",
+    "build": "browserify --debug index.js -o bundle.js",
     "start": "prototype-hub"
   },
   "dependencies": {

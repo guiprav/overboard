@@ -8,10 +8,10 @@ module.exports = state => {
   ]);
 
   Object.defineProperty(card, 'state', {
-    get: () => dom.resolve(state),
+    get: () => dom.resolve(state) || {},
   });
 
-  dom.props(refs.title, () => ({ textContent: dom.resolve(state).title }));
+  dom.props(refs.title, () => ({ textContent: card.state.title }));
 
   return card;
 };
