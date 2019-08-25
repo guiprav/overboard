@@ -9,6 +9,8 @@ module.exports = props => {
     refs.cardListPlaceholder = dom.comment(),
   ]);
 
+  board.refs = refs;
+
   Object.defineProperty(board, 'props', {
     get: () => dom.resolve(props) || {},
   });

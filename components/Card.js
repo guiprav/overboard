@@ -7,6 +7,8 @@ module.exports = props => {
     refs.title = dom.el('div', { class: 'card-title' }),
   ]);
 
+  card.refs = refs;
+
   Object.defineProperty(card, 'props', {
     get: () => dom.resolve(props) || {},
   });

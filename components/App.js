@@ -20,6 +20,7 @@ module.exports = () => {
     refs.board = Board(() => ({ remoteState: hub.state.board })),
   ]);
 
+  app.refs = refs;
   app.state = { hub };
 
   return app;

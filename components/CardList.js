@@ -21,6 +21,8 @@ module.exports = props => {
     ]),
   ]);
 
+  list.refs = refs;
+
   Object.defineProperty(list, 'props', {
     get: () => dom.resolve(props) || {},
   });

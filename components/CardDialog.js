@@ -13,6 +13,8 @@ module.exports = props => {
     ]),
   ]);
 
+  dialog.refs = refs;
+
   Object.defineProperty(dialog, 'props', {
     get: () => dom.resolve(props) || {},
   });
