@@ -8,9 +8,9 @@
     "start": "prototype-hub"
   },
   "dependencies": {
-    "dominant": "github:n2liquid/dominant",
+    "dominant": "github:n2liquid/dominant#master",
     "nanoid": "^2.0.4",
-    "prototype-hub": "github:n2liquid/prototype-hub"
+    "prototype-hub": "github:n2liquid/prototype-hub#master"
   },
   "devDependencies": {
     "browserify": "^16.5.0"
