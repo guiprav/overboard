@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "dominant": "github:n2liquid/dominant",
+    "nanoid": "^2.0.4",
     "prototype-hub": "github:n2liquid/prototype-hub"
   },
   "devDependencies": {

@@ -17,7 +17,7 @@ module.exports = () => {
   let refs = {};
 
   let app = dom.el('div', { class: 'App' }, [
-    refs.board = Board(() => hub.state.board),
+    refs.board = Board(() => ({ remoteState: hub.state.board })),
   ]);
 
   app.state = { hub };

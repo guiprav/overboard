@@ -1,6 +1,7 @@
 <!doctype html>
 <meta charset="utf-8">
 <title>Overboard</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
 <script src="bundle.js"></script>
 
 <style>
@@ -11,6 +12,7 @@
   }
 
   html {
+    --spacing-unit: 8px;
     font-family: Roboto, sans-serif;
     font-size: 14px;
     background-color: #0079bf;
@@ -33,26 +35,88 @@
   .cardList {
     width: 272px;
     border-radius: 3px;
-    padding: 10px 8px;
     background-color: #dfe1e6;
   }
 
+  .cardList-padding {
+    padding: 10px 8px;
+  }
+
   .cardList-listHeader {
-    padding: 0 4px;
+    padding: var(--spacing-unit) calc(var(--spacing-unit) * 1.5);
+    cursor: pointer;
   }
 
   .cardList-cardsWrapper {
-    margin-top: 8px;
+    padding: 0 var(--spacing-unit);
   }
 
   .cardList-cardsWrapper > :nth-child(n+2) {
     margin-top: 8px;
   }
 
+  .cardList-addCardBtn {
+    display: block;
+    width: 100%;
+    outline: none;
+    border: none;
+
+    padding:
+      calc(var(--spacing-unit) * 1.4)
+      calc(var(--spacing-unit) * 1.5)
+      var(--spacing-unit);
+
+    text-align: left;
+    background: transparent;
+    cursor: pointer;
+    opacity: 0.7;
+  }
+
+  .cardList-addCardBtn > span {
+    margin-left: calc(var(--spacing-unit) / 2);
+  }
+
+  .cardList-addCardBtn:hover {
+    opacity: 0.9;
+  }
+
+  .cardList-addCardBtn:hover > span {
+    text-decoration: underline;
+  }
+
   .card {
+    display: block;
+    width: 100%;
+    outline: none;
+    border: none;
     border-radius: 3px;
     padding: 6px 8px;
+    text-align: left;
     background-color: white;
     cursor: pointer;
+  }
+
+  .cardDialog {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px;
+    border: 0;
+    border-radius: 4px;
+    background-color: #f4f5f7;
+  }
+
+  .cardDialog-header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .cardDialog-closeBtn {
+    display: flex;
+    outline: none;
+    border: none;
+    padding: 0;
+    font-size: calc(var(--spacing-unit) * 2);
+    background-color: transparent;
   }
 </style>

@@ -1,10 +1,12 @@
 let Card = require('./Card');
+let CardDialog = require('./CardDialog');
 let dom = require('dominant');
+let nanoid = require('nanoid');
 
-module.exports = state => {
+module.exports = props => {
   let refs = {};
 
-  let cardList = dom.el('div', { class: 'cardList' }, [
+  let list = dom.el('div', { class: 'cardList' }, [
     dom.el('div', { class: 'cardList-listHeader' }, [
       refs.title = dom.el('div', { class: 'cardList-listTitle' }),
     ]),
@@ -12,18 +14,56 @@ module.exports = state => {
     dom.el('div', { class: 'cardList-cardsWrapper' }, [
       refs.cardPlaceholder = dom.comment(),
     ]),
+
+    refs.addCardBtn = dom.el('button', { class: 'cardList-addCardBtn' }, [
+      dom.el('i', { class: 'fas fa-plus' }),
+      dom.el('span', 'Add another card'),
+    ]),
   ]);
 
-  Object.defineProperty(cardList, 'state', {
-    get: () => dom.resolve(state) || {},
+  Object.defineProperty(list, 'props', {
+    get: () => dom.resolve(props) || {},
   });
 
-  dom.props(refs.title, () => ({ textContent: cardList.state.title }));
+  list.state = {
+    get parentBoard() {
+      return dom.resolve(list.props.parentBoard) || {};
+    },
+
+    get remote() {
+      return dom.resolve(list.props.remoteState) || {};
+    },
+  };
+
+  list.addCard = cardState => hub.patch(draft => {
+    let newCardId = nanoid();
+
+    draft.board.cards[newCardId] = cardState;
+
+    let listState = draft.board.lists.find(
+      x => x.title === list.state.remote.title,
+    );
+
+    listState.cardIds.push(newCardId);
+  });
+
+  dom.props(refs.title, () => ({ textContent: list.state.remote.title }));
 
   dom.repeat(refs.cardPlaceholder, {
-    get: () => cardList.state.cards,
-    map: cardState => Card(cardState),
+    get: () => list.state.remote.cardIds,
+
+    map: cardId => Card({
+      parentBoard: () => list.state.parentBoard,
+      parentList: list,
+      cardId,
+    }),
   });
 
-  return cardList;
+  refs.addCardBtn.addEventListener('click', () => {
+    list.addCard({
+      title: `Random card #${(Math.random() * 100000).toFixed()}`,
+    });
+  });
+
+  return list;
 };
