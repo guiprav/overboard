@@ -17,7 +17,7 @@ module.exports = props => {
 
   board.state = {
     get remote() {
-      return board.props.remoteState || {};
+      return dom.resolve(board.props.remoteState) || {};
     },
   };
 
