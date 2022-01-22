@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "dominant": "github:n2liquid/dominant#master",
-    "nanoid": "^2.0.4",
+    "nanoid": "^3.1.31",
     "prototype-hub": "github:n2liquid/prototype-hub#heroku-1"
   },
   "devDependencies": {
